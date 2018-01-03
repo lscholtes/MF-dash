@@ -12,7 +12,7 @@ from filter_df import *
               [Input('sec_variable', 'value')])
 def update_graph_div(sec_variable):
     if not sec_variable:
-        return {'width': '100%', 'float': 'left', 'display': 'inline-block'}
+        return {'width': '100%', 'display': 'inline-block'}
     else:
         return {'display': 'none'}
 

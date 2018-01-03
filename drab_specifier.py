@@ -55,3 +55,36 @@ def update_branch(area, region, division):
     foo = foo[foo['Region'].isin([region])]
     foo = foo[foo['Area'].isin([area])]
     return [{'label': x, 'value': x} for x in foo['Branch'].unique()]
+
+
+# Callbacks to update location specifier dropdowns for the optional second DRAB selector:
+
+
+@app.callback(
+    Output('region2', 'options'),
+    [Input('division2', 'value')])
+def update_region2(input_value):
+    foo = branchlist[branchlist['Division'].isin([input_value])]
+    return [{'label': x, 'value': x} for x in foo['Region'].unique()]
+
+
+@app.callback(
+    Output('area2', 'options'),
+    [Input('region2', 'value'),
+     Input('division2', 'value')])
+def update_area2(region, division):
+    foo = branchlist[branchlist['Division'].isin([division])]
+    foo = foo[foo['Region'].isin([region])]
+    return [{'label': x, 'value': x} for x in foo['Area'].unique()]
+
+
+@app.callback(
+    Output('branch2', 'options'),
+    [Input('area2', 'value'),
+     Input('region2', 'value'),
+     Input('division2', 'value')])
+def update_branch2(area, region, division):
+    foo = branchlist[branchlist['Division'].isin([division])]
+    foo = foo[foo['Region'].isin([region])]
+    foo = foo[foo['Area'].isin([area])]
+    return [{'label': x, 'value': x} for x in foo['Branch'].unique()]

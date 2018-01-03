@@ -15,7 +15,7 @@ def update_scatter_div(sec_variable):
     if not sec_variable:
         return {'display': 'none'}
     else:
-        return {'width': '40%', 'float': 'right', 'display': 'inline-block'}
+        return {'width': '100%', 'display': 'inline-block'}
 
 
 @app.callback(
