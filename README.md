@@ -8,8 +8,7 @@ Scripts for BRAC MF dashboard.
 
 Data is stored locally and is not included in git repo for obvious security and privacy reasons.
 
-Example Screenshot
-![alt text](https://github.com/lscholtes/MF-dash/dashboard_screengrab.png)
+![Example Screenshot](https://github.com/lscholtes/MF-dash/blob/master/dashboard_screengrab.png)
 
 
 TODO:
