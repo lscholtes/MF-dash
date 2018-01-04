@@ -83,6 +83,7 @@ def arima_prediction(y, t, forecast_look_ahead, name, ci_color):
                          x=t_future,
                          mode='lines',
                          name='Upper',
+                         text='Lower ({})'.format(name),
                          showlegend=False,
                          line=dict(
                              color=ci_color,
@@ -92,6 +93,7 @@ def arima_prediction(y, t, forecast_look_ahead, name, ci_color):
                          x=t_future,
                          mode='lines',
                          name='Lower',
+                         text='Lower ({})'.format(name),
                          showlegend=False,
                          line=dict(
                              color=ci_color,

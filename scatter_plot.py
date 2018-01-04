@@ -138,12 +138,13 @@ def update_scatter_graph(scatter_calc):
 
 @app.callback(
     Output(component_id='lin_regn_coeffs', component_property='children'),
-    [Input('scatter_calc', 'children')])
-def update_reg_coeffs(scatter_calc):
+    [Input('scatter_calc', 'children'),
+     Input('scatter_options', 'values')])
+def update_reg_coeffs(scatter_calc, scatter_options):
     if not scatter_calc:  # Avoids errors on server start-up
         return []
     scatter_calc = json.loads(scatter_calc)
-    if scatter_calc['reg_coeffs']:
+    if 'rsquare' in scatter_options:
         rc = scatter_calc['reg_coeffs']
         return [html.Div('Correlation = {0:.2g}'.format(rc['r_value'])),
                 html.Div('Intercept = {0:.2g}'.format(rc['intercept'])),
