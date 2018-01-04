@@ -177,7 +177,8 @@ app.layout = html.Div(style={'font-family': 'Verdana, sans-serif'},
                                       values=[],
                                       style={'display': 'block', 'color': colors['white']})
                     ],
-                        style={'padding-bottom': 10, 'padding-left': 3, 'backgroundColor': colors['BRAC pink']}),
+                        id='mean_overlay_options',
+                        style={'padding-bottom': 10, 'padding-left': 8, 'backgroundColor': colors['BRAC pink']}),
                     # Forecast options
                     html.Div([
                         html.Div(['Forecast:'], style={'font-weight': 'bold', 'color': colors['white']}),
@@ -186,18 +187,31 @@ app.layout = html.Div(style={'font-family': 'Verdana, sans-serif'},
                                           {'label': 'Linear', 'value': 'linear_pred'},
                                           {'label': 'ARIMA', 'value': 'arima_pred'}],
                                       values=[],
-                                      style={'color': colors['white']})
+                                      style={'color': colors['white']}),
+                        html.P(['Forecast for'], style={'color': colors['white']}),
+                        html.Div([
+                            dcc.Dropdown(id='forecast_look_ahead',
+                                         options=[{'label': i, 'value': i} for i in [3, 6, 9, 12]],
+                                         value=3)],
+                                 style={'width': '50%'}),
+                        html.P(['months, based on past'], style={'color': colors['white']}),
+                        html.Div([
+                            dcc.Dropdown(id='forecast_look_back',
+                                         options=[{'label': i, 'value': i} for i in [3, 6, 12, 24, 'all']],
+                                         value=6)],
+                                 style={'width': '50%'}),
+                        html.P(['months.'], style={'color': colors['white']})
                     ],
-                        style={'padding-bottom': 10, 'padding-left': 3, 'backgroundColor': colors['light BRAC pink']})
+                        style={'padding-bottom': 10, 'padding-left': 8, 'backgroundColor': colors['light BRAC pink']})
                 ],
-                    style={'width': '7%', 'display': 'inline-block', 'vertical-align': 'top',
+                    style={'width': '13%', 'display': 'inline-block', 'vertical-align': 'top',
                            'margin-top': 20}),
 
                 # Main time series graph
                 html.Div([
                     dcc.Graph(id='main_graph')
                 ],
-                    style={'width': '93%', 'display': 'inline-block'})
+                    style={'width': '87%', 'display': 'inline-block'})
 
             ])
         ], id='main_graph_div'),
